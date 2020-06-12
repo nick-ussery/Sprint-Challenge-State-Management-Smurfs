@@ -8,7 +8,7 @@ const SmurfForm = props=>{
     return(
         <form onSubmit={(e)=>{
             e.preventDefault()
-            props.addSmurf(props.values)
+            props.addSmurf({name:props.values.name,age: props.values.age, height: props.values.height })
             window.location.reload()
             }}>
             <h1>Add New Smurf</h1>

@@ -4,7 +4,8 @@ export const initialState = {
     values: {
         name: '',
         age: '',
-        height: ''
+        height: '',
+        deleting: ''
     }
 }
 
@@ -40,6 +41,7 @@ export const smurfReducer = (state = initialState, action) =>{
         case 'HANDLE_CHANGES':
             const name = action.payload.target.name
             const value = action.payload.target.value
+            console.log(name, value)
             return{
                 ...state,
                 values:{

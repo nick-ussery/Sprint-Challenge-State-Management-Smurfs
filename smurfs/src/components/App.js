@@ -5,6 +5,7 @@ import {getSmurfs} from '../actions/smurfActions'
 import SmurfList from './smurfList'
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
 import SmurfForm from './smurfForm'
+import DeleteSmurf from './delete'
 
 
 const App = props => {
@@ -20,6 +21,7 @@ const App = props => {
       <Router>
         <Link to='/new'>Add New Smurf         </Link>
         <Link to='/'>       Home</Link>
+        <Link to='/delete'>        Delete </Link>
         <Route exact path='/'>
         <h1>SMURFS! 2.0 W/ Redux</h1>
         {(props.isFetching && <div>Loading Smurfs</div>)}
@@ -28,6 +30,10 @@ const App = props => {
 
         <Route path='/new'>
         <SmurfForm />
+        </Route>
+
+        <Route path='/delete'>
+          <DeleteSmurf />
         </Route>
       </Router>
       </div>

@@ -22,7 +22,7 @@ export const addSmurf = input =>{
         .then(res=>{
             const history= useHistory();
             history.push('/')            
-            dispatch({type: "SMURF_ADDED", payload: res.data})
+            dispatch({type: "SMURF_ADDED"})
             console.log('respnse from add smurf', res)            
         })
         .catch(err=>{
@@ -34,5 +34,17 @@ export const addSmurf = input =>{
 export const handleChanges = e =>{
     return dispatch =>{
         dispatch({type: 'HANDLE_CHANGES', payload: e})
+    }
+}
+
+export const deleteSmurf = input =>{
+    console.log('input in delete function', input)
+    return dispatch =>{
+        dispatch({type: "REMOVE_SMURF_START"})
+        axios.delete(`http://localhost:3333/smurfs/${input}`)
+        .then(res=>{
+            dispatch({type: 'REMOVE_SUCCESSFUL_YOU_MONSTER'})
+        })
+        .catch(err=> console.log(err))
     }
 }
